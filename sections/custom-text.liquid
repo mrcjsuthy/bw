@@ -1,0 +1,92 @@
+{% schema %}
+{
+  "name": "Custom Text Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text content",
+      "default": "<p>Share information about your brand or products here.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Text",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-text-section page-width">
+  <div class="custom-text-section__content text-{{ section.settings.text_alignment }}">
+    {% if section.settings.heading != blank %}
+      <h2 class="custom-text-section__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.text != blank %}
+      <div class="custom-text-section__text rte">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .custom-text-section {
+    padding: 40px 0;
+  }
+
+  .custom-text-section__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .custom-text-section__heading {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+  }
+
+  .custom-text-section__text {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+</style> 
