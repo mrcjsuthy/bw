@@ -1,0 +1,122 @@
+{%- if section.settings.menu != blank -%}
+  <nav class="main-nav" role="navigation">
+    <ul class="main-nav__list">
+      {%- for link in section.settings.menu.links -%}
+        <li class="main-nav__item{% if link.links != blank %} has-dropdown{% endif %}">
+          <a href="{{ link.url }}" class="main-nav__link{% if link.active %} is-active{% endif %}">
+            {{ link.title }}
+          </a>
+          
+          {%- if link.links != blank -%}
+            <div class="mega-menu">
+              <div class="mega-menu__content page-width">
+                <div class="mega-menu__grid">
+                  {%- for childlink in link.links -%}
+                    <div class="mega-menu__column">
+                      <a href="{{ childlink.url }}" class="mega-menu__title">
+                        {{ childlink.title }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <ul class="mega-menu__list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a href="{{ grandchildlink.url }}" class="mega-menu__link">
+                                {{ grandchildlink.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}
+
+<style>
+  .main-nav {
+    position: relative;
+  }
+
+  .main-nav__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav__item {
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  .main-nav__link {
+    display: block;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .main-nav__link.is-active {
+    color: var(--color-primary);
+  }
+
+  .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .main-nav__item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mega-menu__content {
+    padding: 2rem 0;
+  }
+
+  .mega-menu__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .mega-menu__title {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .mega-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mega-menu__link {
+    display: block;
+    padding: 0.5rem 0;
+    color: var(--color-text-light);
+    text-decoration: none;
+  }
+
+  .mega-menu__link:hover {
+    color: var(--color-primary);
+  }
+</style> 
