@@ -8,19 +8,5 @@
  * ------------------------------------------------------------
  */
 {
-  "type": "footer",
-  "name": "t:general.footer",
-  "sections": {
-    "footer": {
-      "type": "footer",
-      "disabled": true,
-      "settings": {
-        "menu": "",
-        "show_payment_icons": true
-      }
-    }
-  },
-  "order": [
-    "footer"
-  ]
+  "markets": {}
 }
