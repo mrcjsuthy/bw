@@ -14,6 +14,12 @@
   </head>
 
   <body>
+    {% render 'announcement-bar',
+      announcement_text: 'Free shipping on orders over $50!',
+      background_color: '#4a90e2',
+      text_color: '#ffffff'
+    %}
+
     {% sections 'header-group' %}
     
     {% section 'custom-text' %}

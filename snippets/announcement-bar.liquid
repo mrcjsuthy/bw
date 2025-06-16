@@ -1,0 +1,19 @@
+{% if announcement_text != blank %}
+  <div class="announcement-bar" style="background-color: {{ background_color | default: '#000000' }}; color: {{ text_color | default: '#ffffff' }};">
+    <div class="page-width">
+      <p class="announcement-bar__message">{{ announcement_text }}</p>
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  .announcement-bar {
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .announcement-bar__message {
+    margin: 0;
+    font-size: 14px;
+  }
+</style> 
